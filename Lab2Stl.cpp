@@ -2,7 +2,7 @@
 #include <vector>
 using namespace std;
 
-vector <int> sum_of_vector(vector <int> first, vector <int> second);
+int sum_of_vector(int first, int second);
 int input_func();
 
 int main()
@@ -14,27 +14,28 @@ int main()
     vector <int> second;
     vector <int> result;
     cout << "Enter the elements of first vector: ";
-    for (int i = 0; i < length; i++) {
+    for (int i = 0; i < length; ++i) {
         first.push_back(input_func());
     }
     cout << "Enter the elements of second vector: ";
-    for (int i = 0; i < length; i++) {
+    for (int i = 0; i < length; ++i) {
         second.push_back(input_func()); 
     }
     cout << "Result: ";
-    result = sum_of_vector(first, second);
-    for (size_t i = 0; i < length; i++) {
-        cout << result.at(i) << " ";
+    for (int i = 0; i < length; ++i) 
+    {
+        result.push_back(sum_of_vector(first.at(i), second.at(i)));
+    }
+    for (int i : result)
+    {
+        cout << i << " ";
     }
     return 0;
 }
 
-vector <int> sum_of_vector(vector <int> first, vector <int> second) 
+int sum_of_vector(int first, int second) 
 {
-    vector <int> result;
-    for(size_t i = 0; i < first.size(); ++i)
-        result.push_back(first.at(i) + second.at(i));
-    return result;
+    return first + second;
 }
 
 int input_func()
